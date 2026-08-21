@@ -269,8 +269,7 @@ and from a page inside `pages/`:
 The complete source code for Workshop 1 is available in this repository:
 
 **GitHub:**
-https://github.com/Steven735-star/APLICACIONES-WEB-/tree/main
-
+https://github.com/Steven735-star/APLICACIONES-WEB-/tree/main/Workshop1/my-site
 ---
 
 ## Author
