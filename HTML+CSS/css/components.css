@@ -1,0 +1,39 @@
+/* ==========================================================
+   components.css
+   Reusable content blocks: sections, articles and images.
+   Loaded on every page.
+   ========================================================== */
+
+section {
+  background: white;
+  padding: 24px;
+  margin-bottom: 24px;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+article {
+  padding: 18px;
+  margin: 18px 0;
+  border: 1px solid #d9e2ec;
+  border-radius: 8px;
+  background: #fbfdff;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 14px auto;
+}
+
+.profile-image {
+  width: 220px;
+}
+
+.hobby-image {
+  width: 400px;
+  max-height: 280px;
+  object-fit: cover;
+}

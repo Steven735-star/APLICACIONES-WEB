@@ -1,0 +1,33 @@
+/* ==========================================================
+   tables.css
+   Styling for data tables.
+   Loaded only on pages/schedule.html
+   ========================================================== */
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 18px;
+  min-width: 760px;
+}
+
+th,
+td {
+  border: 1px solid #bcccdc;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+th {
+  background: #243b53;
+  color: white;
+}
+
+tbody tr:nth-child(even) {
+  background: #f0f4f8;
+}

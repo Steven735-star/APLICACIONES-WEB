@@ -1,0 +1,53 @@
+/* ==========================================================
+   layout.css
+   Page skeleton: header, navigation, main wrapper, footer.
+   Loaded on every page.
+   ========================================================== */
+
+header {
+  background: #102a43;
+  color: white;
+  padding: 28px 20px 18px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 0 16px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 13px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.10);
+}
+
+nav a:hover {
+  background: white;
+  color: #102a43;
+}
+
+main {
+  width: min(1100px, 92%);
+  margin: 28px auto;
+}
+
+footer {
+  background: #102a43;
+  color: white;
+  text-align: center;
+  padding: 18px;
+  margin-top: 30px;
+}
+
+footer p {
+  margin: 0;
+}

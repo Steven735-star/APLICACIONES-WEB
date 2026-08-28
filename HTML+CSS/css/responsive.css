@@ -1,0 +1,28 @@
+/* ==========================================================
+   responsive.css
+   Adjustments for small screens.
+   Loaded on every page (must come AFTER the other stylesheets
+   so its rules can override them).
+   ========================================================== */
+
+@media (max-width: 700px) {
+  header {
+    padding: 22px 12px 16px;
+  }
+
+  nav {
+    flex-direction: column;
+  }
+
+  nav a {
+    width: 100%;
+  }
+
+  main {
+    width: 94%;
+  }
+
+  section {
+    padding: 18px;
+  }
+}

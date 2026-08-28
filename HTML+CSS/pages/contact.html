@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - My University Website</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/forms.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body>
+
+  <header>
+    <h1>Contact</h1>
+
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="courses.html">Courses</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="hobbies.html">Hobbies</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>Contact Form</h2>
+
+      <p>
+        If you would like to contact me, please complete the following form.
+      </p>
+
+      <form action="#" method="get">
+
+        <p>
+          <label for="name">Name:</label><br>
+          <input type="text" id="name" name="name" required>
+        </p>
+
+        <p>
+          <label for="email">Email:</label><br>
+          <input type="email" id="email" name="email" required>
+        </p>
+
+        <p>
+          <label for="birthdate">Date of birth:</label><br>
+          <input type="date" id="birthdate" name="birthdate">
+        </p>
+
+        <p>
+          <label for="degree">Degree program:</label><br>
+          <input type="text" id="degree" name="degree">
+        </p>
+
+        <p>
+          <label for="semester">Semester:</label><br>
+          <input type="number" id="semester" name="semester" min="1" max="12">
+        </p>
+
+        <p>
+          <label for="reason">Reason for contact:</label><br>
+          <select id="reason" name="reason">
+            <option value="">Select a reason</option>
+            <option value="academic">Academic question</option>
+            <option value="project">Project collaboration</option>
+            <option value="personal">Personal contact</option>
+            <option value="other">Other</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="message">Message:</label><br>
+          <textarea
+            id="message"
+            name="message"
+            rows="6"
+            cols="40"
+            placeholder="Write your message here...">
+          </textarea>
+        </p>
+
+        <p>
+          <input type="checkbox" id="accept" name="accept" required>
+          <label for="accept">
+            I accept the terms and conditions.
+          </label>
+        </p>
+
+        <p>
+          <button type="submit">Submit</button>
+          <button type="reset">Clear Form</button>
+        </p>
+
+      </form>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Paúl Rodríguez - Computer Science</p>
+  </footer>
+
+</body>
+
+</html>
