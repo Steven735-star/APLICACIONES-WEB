@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600">
+<defs><linearGradient id="g2" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#10212b"/><stop offset="1" stop-color="#283c48"/></linearGradient><filter id="s2"><feDropShadow dx="0" dy="18" stdDeviation="20" flood-opacity=".3"/></filter></defs>
+<rect width="960" height="600" fill="url(#g2)"/><rect x="0" y="410" width="960" height="190" fill="#091319" opacity=".62"/><circle cx="170" cy="120" r="170" fill="#24d18f" opacity=".12"/>
+<g filter="url(#s2)" transform="translate(347 70)"><rect width="270" height="470" rx="44" fill="#526875"/><rect x="10" y="10" width="250" height="450" rx="36" fill="#071218"/><rect x="94" y="22" width="82" height="10" rx="5" fill="#41545f"/><circle cx="135" cy="425" r="19" fill="#142a36"/>
+<g transform="translate(55 118)"><circle cx="80" cy="80" r="74" fill="#102d3c" stroke="#24d18f" stroke-width="8"/><path d="M44 84l22 22 50-54" fill="none" stroke="#7af0bd" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><text x="80" y="190" text-anchor="middle" fill="#b9cad2" font-family="Arial,sans-serif" font-size="20">DIAGNÓSTICO OK</text></g></g>
+<g fill="#d4e2e8" font-family="Arial,sans-serif"><text x="54" y="70" font-size="24" font-weight="700">SERVICIO PARA CELULARES</text><text x="664" y="252" font-size="20">Sistema</text><text x="664" y="305" font-size="20">Batería</text><text x="664" y="358" font-size="20">Pantalla</text></g>
+<g stroke="#24d18f" stroke-width="8" stroke-linecap="round"><path d="M664 267h128"/><path d="M664 320h92"/><path d="M664 373h112"/></g>
+</svg>

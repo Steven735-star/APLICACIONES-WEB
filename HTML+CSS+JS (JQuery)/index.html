@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="B&B Solutions: soporte técnico profesional para computadoras y celulares, mantenimiento de PC por $15 y asistencia remota mediante AnyDesk.">
+  <title>B&B Solutions | Servicio técnico para computadoras y celulares</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://code.jquery.com">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="site-header" id="inicio">
+    <div class="container nav-wrap">
+      <a class="brand" href="#inicio" aria-label="Bit & Bolt Solutions - Inicio">
+        <img src="assets/logo.svg" alt="Logo Bit & Bolt Solutions" width="42" height="42">
+
+        <span class="brand-text">
+          <strong class="brand-abbr">B&B</strong>
+          <span class="brand-name">Bit and Bolt </span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#remoto">Soporte remoto</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a class="header-cta" href="https://wa.me/593960438690?text=Hola%20B&B%20Solutions,%20necesito%20soporte%20t%C3%A9cnico." target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-grid"></div>
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <span class="eyebrow">COMPUTADORAS · CELULARES · SOPORTE REMOTO</span>
+          <h1 id="hero-title">Tu mundo tecnológico, <span>sin límites.</span></h1>
+          <p>Diagnóstico, reparación de software y hardware, mantenimiento preventivo y asistencia remota mediante AnyDesk. Atención clara, segura y sin complicaciones.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contacto">Solicitar servicio</a>
+            <button class="btn btn-secondary" id="changeHeroColor" type="button">Cambiar color</button>
+          </div>
+          <div class="hero-trust" aria-label="Beneficios principales">
+            <div><strong>$15</strong><span>Mantenimiento PC</span></div>
+            <div><strong>Remoto</strong><span>Software por AnyDesk</span></div>
+            <div><strong>Directo</strong><span>096 043 8690</span></div>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="device-card laptop-card">
+            <div class="laptop-screen">
+              <div class="terminal-bar"><i></i><i></i><i></i></div>
+              <div class="status-line"><span></span> Diagnóstico del sistema</div>
+              <div class="progress"><b></b></div>
+              <small>Optimización · Seguridad · Rendimiento</small>
+            </div>
+            <div class="laptop-base"></div>
+          </div>
+          <div class="device-card phone-card">
+            <div class="phone-speaker"></div>
+            <div class="phone-icon">✓</div>
+            <strong>Equipo listo</strong>
+            <small>Revisión completa</small>
+          </div>
+          <div class="floating-badge badge-top">Soporte seguro</div>
+          <div class="floating-badge badge-bottom">Diagnóstico profesional</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-strip" aria-label="Servicios destacados">
+      <div class="container quick-grid">
+        <div><span>01</span><p><strong>Software</strong>Optimización y solución de fallos</p></div>
+        <div><span>02</span><p><strong>Hardware</strong>Diagnóstico, reparación y upgrades</p></div>
+        <div><span>03</span><p><strong>Celulares</strong>Revisión de sistema y componentes</p></div>
+        <div><span>04</span><p><strong>Remoto</strong>Asistencia mediante AnyDesk</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="servicios">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow dark">SERVICIO TÉCNICO INTEGRAL</span>
+            <h2>Soluciones para tus equipos</h2>
+          </div>
+          <p>Atendemos problemas frecuentes de software y hardware en computadoras y celulares. Antes de cualquier reparación que requiera repuestos, te indicamos el diagnóstico y el alcance del trabajo.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card featured">
+            <div class="service-icon" aria-hidden="true">✦</div>
+            <span class="service-label">Más solicitado</span>
+            <h3>Mantenimiento de computadoras</h3>
+            <p>Limpieza preventiva, revisión térmica y comprobación general del equipo para conservar un funcionamiento estable.</p>
+            <div class="price"><span>desde</span><strong>$15</strong></div>
+            <small>*Repuestos y trabajos adicionales no incluidos.</small>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">⌘</div>
+            <h3>Software y optimización</h3>
+            <p>Equipos lentos, errores del sistema, controladores, instalación y configuración de programas, limpieza de software no deseado y puesta a punto.</p>
+            <a href="#contacto">Consultar servicio →</a>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">▣</div>
+            <h3>Hardware y upgrades</h3>
+            <p>Diagnóstico de fallas físicas, cambio o instalación de SSD y RAM, revisión de temperatura, periféricos, puertos y otros componentes.</p>
+            <a href="#contacto">Solicitar diagnóstico →</a>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">▯</div>
+            <h3>Servicio para celulares</h3>
+            <p>Revisión de rendimiento, almacenamiento y sistema; diagnóstico de batería, pantalla, conectores y otros problemas de hardware.</p>
+            <a href="#contacto">Revisar mi celular →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="remote-section" id="remoto">
+      <div class="container remote-layout">
+        <div class="remote-panel">
+          <div class="remote-orbit orbit-one"></div>
+          <div class="remote-orbit orbit-two"></div>
+          <div class="remote-screen">
+            <div class="remote-bar"><span></span><span></span><span></span></div>
+            <div class="remote-logo">A</div>
+            <strong>Conexión remota</strong>
+            <small>Autorizada por el cliente</small>
+            <div class="connection-line"><i></i></div>
+          </div>
+        </div>
+        <div class="remote-copy">
+          <span class="eyebrow">ASISTENCIA SIN TRASLADOS</span>
+          <h2>Soporte remoto mediante AnyDesk</h2>
+          <p>Para incidencias de software podemos conectarnos a tu computadora en tiempo real, siempre con tu autorización. Es una alternativa práctica para configuración, revisión del sistema y solución de problemas que no requieren intervención física.</p>
+          <div class="steps">
+            <div><b>1</b><p><strong>Contáctanos</strong><span>Describe el problema y coordinamos la sesión.</span></p></div>
+            <div><b>2</b><p><strong>Abre AnyDesk</strong><span>Comparte únicamente el identificador necesario para iniciar la conexión.</span></p></div>
+            <div><b>3</b><p><strong>Autoriza la sesión</strong><span>Tú decides cuándo aceptar y cuándo finalizar el acceso.</span></p></div>
+          </div>
+          <div class="remote-actions">
+            <a class="btn btn-primary" href="https://wa.me/593960438690?text=Hola,%20necesito%20soporte%20remoto%20por%20AnyDesk." target="_blank" rel="noopener">Solicitar soporte remoto</a>
+            <a class="text-link" href="https://anydesk.com/" target="_blank" rel="noopener">Sitio oficial de AnyDesk ↗</a>
+          </div>
+          <p class="security-note"><strong>Seguridad:</strong> nunca aceptes conexiones remotas de desconocidos. Nuestro soporte se inicia únicamente después de que tú lo solicites.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process-section">
+      <div class="container">
+        <div class="section-heading compact">
+          <div>
+            <span class="eyebrow dark">PROCESO SIMPLE</span>
+            <h2>Así trabajamos</h2>
+          </div>
+        </div>
+        <div class="process-grid">
+          <article><span>01</span><h3>Cuéntanos el problema</h3><p>Escríbenos por WhatsApp o utiliza el formulario.</p></article>
+          <article><span>02</span><h3>Evaluamos el caso</h3><p>Definimos si conviene soporte remoto o revisión física.</p></article>
+          <article><span>03</span><h3>Confirmamos el trabajo</h3><p>Te explicamos qué se realizará antes de intervenir el equipo.</p></article>
+          <article><span>04</span><h3>Entregamos la solución</h3><p>Verificamos funcionamiento y te damos recomendaciones.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gallery-section" id="galeria">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow dark">NUESTRO TRABAJO</span>
+            <h2>Galería de servicios</h2>
+          </div>
+          <p>Haz clic sobre cualquier imagen para verla ampliada.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-item" tabindex="0" role="button" aria-label="Ampliar imagen: Mantenimiento de computadora">
+            <img src="assets/gallery-computer.svg" alt="Ilustración de mantenimiento y revisión de una computadora" data-caption="Mantenimiento preventivo de computadoras">
+            <figcaption><span>Mantenimiento</span><strong>Computadoras</strong></figcaption>
+          </figure>
+          <figure class="gallery-item" tabindex="0" role="button" aria-label="Ampliar imagen: Diagnóstico de celular">
+            <img src="assets/gallery-phone.svg" alt="Ilustración de diagnóstico técnico de un celular" data-caption="Diagnóstico técnico de celulares">
+            <figcaption><span>Diagnóstico</span><strong>Celulares</strong></figcaption>
+          </figure>
+          <figure class="gallery-item" tabindex="0" role="button" aria-label="Ampliar imagen: Soporte remoto">
+            <img src="assets/gallery-remote.svg" alt="Ilustración de soporte remoto entre dos computadoras" data-caption="Soporte remoto mediante AnyDesk">
+            <figcaption><span>Asistencia</span><strong>Soporte remoto</strong></figcaption>
+          </figure>
+          <figure class="gallery-item" tabindex="0" role="button" aria-label="Ampliar imagen: Mejora de hardware">
+            <img src="assets/gallery-upgrade.png" alt="Ilustración de componentes y mejora de hardware" data-caption="Mejoras de hardware y componentes">
+            <figcaption><span>Rendimiento</span><strong>Hardware & upgrades</strong></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contacto">
+      <div class="container contact-layout">
+        <div class="contact-info">
+          <span class="eyebrow">CONTACTO</span>
+          <h2>¿Tu equipo necesita ayuda?</h2>
+          <p>Escríbenos para solicitar una reparación, coordinar soporte remoto o contarnos cómo fue tu experiencia con el servicio.</p>
+          <div class="contact-card">
+            <span>Teléfono / WhatsApp</span>
+            <a href="tel:+593960438690">096 043 8690</a>
+          </div>
+          <div class="team-card">
+            <span>Equipo técnico</span>
+            <strong>Steven Rodríguez</strong>
+            <strong>Kevin Erazo</strong>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-head">
+            <span>Formulario de contacto</span>
+            <p>Responderemos a tu solicitud lo antes posible.</p>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="name">Nombre *</label>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Tu nombre" required>
+              <small class="error" id="nameError"></small>
+            </div>
+            <div class="field">
+              <label for="email">Correo electrónico *</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="nombre@correo.com" required>
+              <small class="error" id="emailError"></small>
+            </div>
+          </div>
+          <div class="field">
+            <label for="reason">¿En qué podemos ayudarte? *</label>
+            <select id="reason" name="reason" required>
+              <option value="">Selecciona una opción</option>
+              <option value="repair">Solicitar reparación</option>
+              <option value="maintenance">Mantenimiento de computadora ($15)</option>
+              <option value="remote">Soporte remoto por AnyDesk</option>
+              <option value="rating">Calificar el servicio</option>
+              <option value="other">Otra consulta</option>
+            </select>
+            <small class="error" id="reasonError"></small>
+          </div>
+          <div class="field rating-field" id="ratingField" aria-hidden="true">
+            <label>Calificación del servicio *</label>
+            <div class="stars" role="radiogroup" aria-label="Calificación de 1 a 5 estrellas">
+              <button type="button" data-rating="1" aria-label="1 estrella">★</button>
+              <button type="button" data-rating="2" aria-label="2 estrellas">★</button>
+              <button type="button" data-rating="3" aria-label="3 estrellas">★</button>
+              <button type="button" data-rating="4" aria-label="4 estrellas">★</button>
+              <button type="button" data-rating="5" aria-label="5 estrellas">★</button>
+            </div>
+            <input type="hidden" id="rating" name="rating" value="">
+            <small class="error" id="ratingError"></small>
+          </div>
+          <div class="field">
+            <label for="message">Mensaje *</label>
+            <textarea id="message" name="message" rows="5" placeholder="Cuéntanos qué problema tiene tu equipo o cómo fue tu experiencia..." required></textarea>
+            <div class="field-meta"><small class="error" id="messageError"></small><span id="charCount">0 / 500</span></div>
+          </div>
+          <label class="consent"><input type="checkbox" id="consent" required><span>Acepto que estos datos se utilicen únicamente para responder mi solicitud.</span></label>
+          <small class="error" id="consentError"></small>
+          <button class="btn btn-form" type="submit">Enviar mensaje</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-layout">
+      <div>
+        <a class="brand footer-brand" href="#inicio"><img src="assets/logo.svg" alt="" width="38" height="38"><span><strong>B&B</strong> Solutions</span></a>
+        <p>Servicio técnico para computadoras y celulares.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#remoto">Soporte remoto</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <p class="copyright">© <span id="year"></span> Steven Rodríguez & Kevin Erazo · Workshop 3</p>
+    </div>
+  </footer>
+
+  <div class="modal" id="imageModal" role="dialog" aria-modal="true" aria-labelledby="modalCaption" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" type="button" aria-label="Cerrar imagen">×</button>
+      <img id="modalImage" src="" alt="Imagen ampliada">
+      <p id="modalCaption"></p>
+    </div>
+  </div>
+
+  <a class="whatsapp-float" href="https://wa.me/593960438690?text=Hola%20B&B%20Solutions,%20necesito%20informaci%C3%B3n." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">WA</a>
+
+  <!-- Workshop requirement: latest jQuery version linked from the official jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

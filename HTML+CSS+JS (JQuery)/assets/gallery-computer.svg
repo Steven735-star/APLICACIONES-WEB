@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b2231"/><stop offset="1" stop-color="#18475a"/></linearGradient><filter id="s"><feDropShadow dx="0" dy="16" stdDeviation="18" flood-opacity=".24"/></filter></defs>
+<rect width="960" height="600" fill="url(#g)"/><circle cx="790" cy="88" r="190" fill="#24d18f" opacity=".13"/><path d="M0 490L960 360v240H0z" fill="#07151d" opacity=".46"/>
+<g filter="url(#s)"><rect x="180" y="126" width="560" height="312" rx="24" fill="#213947" stroke="#8ca4b1" stroke-width="8"/><rect x="207" y="153" width="506" height="258" rx="10" fill="#071218"/><path d="M144 449h632l42 41H102z" fill="#a9b8c1"/><path d="M109 490h700l-24 25H135z" fill="#6f8490"/></g>
+<g transform="translate(277 210)"><circle cx="80" cy="80" r="62" fill="#123446" stroke="#24d18f" stroke-width="8"/><circle cx="80" cy="80" r="18" fill="#24d18f"/><path d="M80 0v36M80 124v36M0 80h36M124 80h36M23 23l26 26M111 111l26 26M137 23l-26 26M49 111l-26 26" stroke="#7af0bd" stroke-width="9" stroke-linecap="round"/></g>
+<g transform="translate(505 205)"><rect width="150" height="155" rx="18" fill="#102b39" stroke="#315365" stroke-width="4"/><path d="M33 45h84M33 73h62M33 101h75" stroke="#c1d1d9" stroke-width="10" stroke-linecap="round"/><circle cx="118" cy="125" r="12" fill="#24d18f"/></g>
+<text x="50" y="74" fill="#e7f3f7" font-family="Arial,sans-serif" font-size="24" font-weight="700">MANTENIMIENTO DE COMPUTADORAS</text>
+</svg>
