@@ -1,40 +1,98 @@
-# Workshop 3 — SRK TechCare
+# B&B — Bit and Bolt
 
-**Autores:** Steven Rodríguez y Kevin Erazo  
-**Asignatura:** Web Applications — Semester II 2026  
-**Tecnologías:** HTML5, CSS3, JavaScript y jQuery 4.0.0
+**Workshop 3 — Web Applications**  
+**Students:** Steven Rodríguez and Kevin Erazo  
+**Semester:** II 2026  
+**Technologies:** HTML5, CSS3, JavaScript, and jQuery
 
-## Descripción
-SRK TechCare es una página web responsive de servicio técnico para computadoras y celulares. Presenta mantenimiento preventivo de computadoras desde $15, diagnóstico de software/hardware y soporte remoto mediante AnyDesk.
+## Project Description
 
-## Cómo ejecutar
-1. Descomprime la carpeta `RodriguezSteven_ErazoKevin`.
-2. Abre `index.html` en un navegador moderno con conexión a Internet para cargar jQuery y la tipografía web.
-3. También puedes ejecutar un servidor local desde esta carpeta:
-   - Python: `python3 -m http.server 8000`
-   - Abre `http://localhost:8000`
+**B&B — Bit and Bolt** is a responsive technical service website focused on computers and smartphones.
 
-## Requisitos del Workshop cubiertos
-- Navigation Bar con más de tres enlaces.
-- Hero Section con título, descripción y botón.
-- Galería de cuatro imágenes.
-- Formulario con nombre, email, mensaje y botón de envío.
-- CSS Flexbox y Grid.
-- Efectos hover.
-- Diseño responsive mediante media queries.
-- jQuery: botón del Hero cambia el color de fondo aleatoriamente.
-- jQuery: galería abre imágenes en un popup modal.
-- jQuery: validación de formulario y alerta exacta `Form submitted successfully!`.
-- Funcionalidades adicionales: menú móvil, calificación por estrellas, contador de caracteres y contacto directo por WhatsApp.
+The website presents services such as:
 
-## Estructura
+- Computer preventive maintenance for **$15**
+- Software diagnosis and troubleshooting
+- Hardware diagnosis and repair
+- SSD and RAM upgrades
+- Smartphone technical support
+- System optimization and cleanup
+- Remote software support through **AnyDesk**
+
+The website was designed with a modern technology-oriented interface, clear service information, visible contact options, and responsive behavior for desktop, tablet, and mobile devices.
+
+## Contact
+
+**Phone / WhatsApp:** 0960438690
+
+## How to Run the Project
+
+1. Download or clone the project repository.
+2. Open the project folder.
+3. Open `index.html` in a modern web browser.
+
+For a better development experience, you can also run a local server:
+
+```bash
+python3 -m http.server 8000
 ```
+
+Then open:
+
+```text
+http://localhost:8000
+```
+
+An Internet connection may be required to load external resources such as jQuery or web fonts.
+
+## Workshop Requirements Covered
+
+The project includes all the main requirements requested in Workshop 3:
+
+- Navigation bar with at least three links
+- Hero section with a heading, short description, and action button
+- Image gallery with at least four images
+- Contact form with:
+  - Name
+  - Email
+  - Message
+  - Submit button
+- CSS Flexbox and Grid layouts
+- Hover effects on navigation links and buttons
+- Responsive design using media queries
+- jQuery interaction to randomly change the Hero background color
+- jQuery image gallery with popup modal
+- jQuery form validation
+- Success alert with the required message:
+
+```text
+Form submitted successfully!
+```
+
+## Additional Features
+
+The website also includes:
+
+- Responsive mobile navigation
+- Service cards
+- Remote support section
+- AnyDesk support information
+- Service rating with stars
+- Dynamic form fields
+- Message character counter
+- Direct WhatsApp contact
+- Accessible gallery modal
+- Keyboard support for closing the modal with the `Escape` key
+
+## Project Structure
+
+```text
 RodriguezSteven_ErazoKevin/
 ├── index.html
 ├── style.css
 ├── script.js
-├── REPORT.html
 ├── README.md
+├── REPORT.html
 ├── REPOSITORY_LINK.txt
 └── assets/
     ├── logo.svg
@@ -46,5 +104,36 @@ RodriguezSteven_ErazoKevin/
     └── screenshot-desktop.png
 ```
 
-## Nota sobre el formulario
-El workshop exige validación en el navegador, no un backend. Por eso, el formulario demuestra validación y muestra el mensaje solicitado, pero no almacena ni envía datos a un servidor.
+## Form Behavior
+
+The workshop requires client-side validation but does not require a backend.
+
+For this reason, the contact form validates the information entered by the user and displays the required success message when the data is valid, but it does not permanently store or send the submitted information to a server.
+
+## Remote Support
+
+Remote assistance is intended mainly for software-related problems that can be solved without physically accessing the device.
+
+Remote sessions may be performed using **AnyDesk**, with the customer's authorization.
+
+Examples of remote support include:
+
+- Software installation
+- Operating system configuration
+- Performance optimization
+- Application troubleshooting
+- Driver-related problems
+- Basic malware cleanup
+- General software support
+
+Hardware repairs, physical maintenance, and component replacements require direct technical service.
+
+## Authors
+
+- **Steven Rodríguez**
+- **Kevin Erazo**
+
+---
+
+**B&B — Bit and Bolt**  
+*Computer & Mobile Technical Service*

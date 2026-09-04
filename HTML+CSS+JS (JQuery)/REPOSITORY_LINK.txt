@@ -3,4 +3,4 @@ WORKSHOP 3 - REPOSITORY LINK
 Autores: Steven Rodríguez / Kevin Erazo
 
 
-https://github.com/Steven735-star/APLICACIONES-WEB
+https://github.com/Steven735-star/APLICACIONES-WEB/tree/main/HTML%2BCSS%2BJS%20(JQuery)
