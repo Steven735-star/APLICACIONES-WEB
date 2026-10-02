@@ -1,0 +1,7 @@
+make dev          # Levantar todo
+make logs-web     # Ver logs Django en tiempo real
+make shell        # Django shell con todos los modelos pre-importados
+make migrate      # Después de crear nuevos modelos
+make test         # Correr la suite de tests
+make stop         # Apagar sin perder datos
+make db-backup    # Antes de cambios de esquema peligrosos

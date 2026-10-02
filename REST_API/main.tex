@@ -1,0 +1,742 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage{url}
+
+% ------------------------------------------------------------------------------
+% COLORS
+% ------------------------------------------------------------------------------
+
+\definecolor{codebg}{RGB}{246,247,249}
+\definecolor{accent}{RGB}{34,94,168}
+\definecolor{accentlight}{RGB}{235,242,250}
+\definecolor{okgreen}{RGB}{35,120,65}
+\definecolor{warnorange}{RGB}{180,100,0}
+\definecolor{nogray}{RGB}{95,95,95}
+\definecolor{textgray}{RGB}{70,70,70}
+
+% ------------------------------------------------------------------------------
+% PDF / HYPERLINK CONFIGURATION
+% ------------------------------------------------------------------------------
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=accent,
+    urlcolor=accent,
+    citecolor=accent,
+    pdftitle={Workshop 5 - MD Marketing & Design},
+    pdfauthor={Kevin Erazo; Steven Rodríguez}
+}
+
+\urlstyle{same}
+
+% ------------------------------------------------------------------------------
+% HEADER AND FOOTER
+% ------------------------------------------------------------------------------
+
+\pagestyle{fancy}
+\setlength{\headheight}{14pt}
+\fancyhf{}
+\lhead{\small Web Applications -- Workshop 5}
+\rhead{\small MD Marketing \& Design}
+\cfoot{\thepage}
+
+% ------------------------------------------------------------------------------
+% CODE STYLE
+% ------------------------------------------------------------------------------
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{codebg},
+    frame=single,
+    rulecolor=\color{black!15},
+    breaklines=true,
+    columns=fullflexible,
+    showstringspaces=false,
+    tabsize=2
+}
+
+% ------------------------------------------------------------------------------
+% STATUS LABELS
+% ------------------------------------------------------------------------------
+
+\newcommand{\implemented}{
+    \textcolor{okgreen}{\textbf{Implemented}}
+}
+
+\newcommand{\adapted}{
+    \textcolor{warnorange}{\textbf{Adapted}}
+}
+
+\newcommand{\notapplicable}{
+    \textcolor{nogray}{\textbf{Not applicable}}
+}
+
+% ------------------------------------------------------------------------------
+% EVIDENCE FIGURE
+% ------------------------------------------------------------------------------
+
+\newcommand{\evidencefigure}[3]{%
+\begin{figure}[H]
+    \centering
+
+    \IfFileExists{images/#1}{
+        \includegraphics[width=0.96\textwidth]{images/#1}
+    }{
+        \fbox{
+            \begin{minipage}[c][5.4cm][c]{0.90\textwidth}
+                \centering
+
+                \textbf{Evidence screenshot to be added}\\[0.4cm]
+
+                \texttt{images/#1}\\[0.35cm]
+
+                Replace this placeholder with the real screenshot
+                captured from the implementation.
+            \end{minipage}
+        }
+    }
+
+    \caption{#2}
+    \label{#3}
+\end{figure}
+}
+
+% ==============================================================================
+% DOCUMENT
+% ==============================================================================
+
+\begin{document}
+
+% ==============================================================================
+% TITLE PAGE
+% ==============================================================================
+
+\begin{titlepage}
+\thispagestyle{empty}
+\centering
+
+\vspace*{1.2cm}
+
+% Course
+{\Large
+\color{textgray}
+\textbf{WEB APPLICATIONS}
+\par}
+
+\vspace{0.35cm}
+
+{\color{accent}
+\rule{0.82\textwidth}{1.2pt}
+\par}
+
+\vspace{1.15cm}
+
+% Workshop number
+{\fontsize{20}{24}\selectfont
+\color{accent}
+\textbf{WORKSHOP 5}
+\par}
+
+\vspace{0.45cm}
+
+% Main workshop title
+{\fontsize{26}{32}\selectfont
+\textbf{Building and Testing a REST API}
+\par}
+
+\vspace{0.35cm}
+
+{\Large
+\color{textgray}
+JWT Authentication, OpenAPI Documentation,
+and Protected Resources
+\par}
+
+\vspace{1.35cm}
+
+% Project
+{\color{accent}
+\rule{0.40\textwidth}{0.7pt}
+\par}
+
+\vspace{0.55cm}
+
+{\fontsize{28}{34}\selectfont
+\textbf{MD Marketing \& Design}
+\par}
+
+\vspace{0.35cm}
+
+{\large
+\color{textgray}
+Workshop 5 Implementation Report
+\par}
+
+\vspace{1.55cm}
+
+% Authors
+{\large
+\textbf{Authors}
+\par}
+
+\vspace{0.35cm}
+
+{\Large
+Kevin Erazo
+\par}
+
+\vspace{0.15cm}
+
+{\Large
+Steven Rodríguez
+\par}
+
+\vspace{1.15cm}
+
+% Academic information
+\begin{minipage}{0.62\textwidth}
+\centering
+
+\renewcommand{\arraystretch}{1.45}
+
+\begin{tabular}{>{\bfseries}r l}
+Instructor: & Prof. Francisco Hidrobo \\
+Semester:   & Semester II 2026 \\
+Date:       & October 2026 \\
+\end{tabular}
+
+\end{minipage}
+
+\vspace{1.25cm}
+
+% Repository
+{\small
+\color{textgray}
+\textbf{GitHub Repository}
+\par}
+
+\vspace{0.25cm}
+
+\href{https://github.com/Steven735-star/APLICACIONES-WEB}
+{
+    \color{accent}
+    \texttt{github.com/Steven735-star/APLICACIONES-WEB}
+}
+
+\vfill
+
+{\color{accent}
+\rule{0.82\textwidth}{0.8pt}
+\par}
+
+\vspace{0.35cm}
+
+{\small
+\color{textgray}
+Implementation, testing, and scope-decision report
+\par}
+
+\vspace{0.45cm}
+
+\end{titlepage}
+
+% ==============================================================================
+% TABLE OF CONTENTS
+% ==============================================================================
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+Workshop 5 focuses on the implementation, protection, documentation, and testing of a REST API. The requested topics include public and protected endpoints, JWT authentication, refresh and logout mechanisms, application-specific CRUD operations, OpenAPI documentation, Swagger testing, and Postman testing.
+
+This report applies those objectives to the real \textbf{MD Marketing \& Design} project. The instructor authorized the use of the architecture that best fits each project and also allowed teams to explain why specific workshop features are not appropriate for their application. Therefore, the existing \textbf{Django + Django REST Framework + PostgreSQL} architecture is preserved instead of replacing it with FastAPI only for this workshop.
+
+A reduced academic version is used for the submission so the repository contains only the components relevant to Workshop 5.
+
+\section{Objectives}
+
+\subsection{General Objective}
+
+Demonstrate a functional REST API applied to MD Marketing \& Design, protected with JWT authentication, connected to PostgreSQL, documented with OpenAPI, and tested through the required API workflows.
+
+\subsection{Specific Objectives}
+
+\begin{itemize}[leftmargin=*]
+    \item Verify reproducible execution of the backend and its PostgreSQL connection.
+    \item Demonstrate public and JWT-protected endpoints.
+    \item Demonstrate login, access tokens, refresh tokens, and logout through token revocation.
+    \item Provide an endpoint that returns information about the authenticated user.
+    \item Demonstrate a complete protected CRUD over the \textit{Customer} entity.
+    \item Expose automatic OpenAPI documentation and Swagger UI.
+    \item Validate successful and unsuccessful requests with Swagger, terminal commands, and Postman.
+    \item Explain the workshop requirements that are intentionally not used because they do not fit the project's operational model.
+\end{itemize}
+
+\section{Submission Scope}
+
+The complete MD system contains additional modules and infrastructure. For Workshop 5, the academic version intentionally isolates only the phase being evaluated.
+
+The reduced scope includes:
+
+\begin{itemize}[leftmargin=*]
+    \item Django REST backend.
+    \item PostgreSQL database.
+    \item JWT authentication.
+    \item Authenticated-user endpoint.
+    \item Customer CRUD.
+    \item OpenAPI and Swagger.
+    \item Postman tests.
+    \item Django Admin for controlled user creation.
+\end{itemize}
+
+Components such as React, Redis, Celery, Channels, inventory, finance, and production are not necessary to demonstrate this workshop phase and are therefore excluded from the reduced repository.
+
+\evidencefigure{01_project_location.png}
+{Local Workshop 5 project directory in the development environment.}
+{fig:project-location}
+
+The local project path used for this workshop is:
+
+\begin{lstlisting}
+~/Documents/SEMESTRE 8/CA57 - APLICACIONES WEB /REST_API
+\end{lstlisting}
+
+\section{Architecture}
+
+The Workshop 5 implementation uses the following technologies:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Django 5}: backend framework.
+    \item \textbf{Django REST Framework}: REST API and JSON serialization.
+    \item \textbf{SimpleJWT}: JWT access and refresh tokens.
+    \item \textbf{PostgreSQL 16}: relational persistence.
+    \item \textbf{drf-spectacular}: automatic OpenAPI schema and Swagger UI.
+    \item \textbf{Docker Compose}: reproducible local execution.
+\end{itemize}
+
+The architecture can be summarized as:
+
+\begin{center}
+\texttt{Client / Swagger / Postman}
+$\rightarrow$
+\texttt{Django REST API}
+$\rightarrow$
+\texttt{PostgreSQL}
+\end{center}
+
+Authentication is performed with Bearer JWT tokens for protected endpoints.
+
+\section{Startup and Infrastructure Verification}
+
+The application is started through Docker Compose:
+
+\begin{lstlisting}
+docker compose up -d --build
+docker compose ps
+\end{lstlisting}
+
+The backend exposes a health endpoint that verifies both the API process and the database connection:
+
+\begin{lstlisting}
+curl http://localhost:8000/api/v1/health/
+\end{lstlisting}
+
+\evidencefigure{02_services_health.png}
+{Docker services running and successful API/database health verification.}
+{fig:services-health}
+
+\section{Workshop Requirement Mapping}
+
+Table~\ref{tab:reqs} explains how the Workshop 5 requirements are applied to MD Marketing \& Design.
+
+\small
+\begin{longtable}{p{0.05\textwidth} p{0.34\textwidth} p{0.18\textwidth} p{0.35\textwidth}}
+\caption{Workshop requirements and their application in MD.}
+\label{tab:reqs}\\
+\toprule
+\textbf{No.} & \textbf{Requirement} & \textbf{Status} & \textbf{Application in MD} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{No.} & \textbf{Requirement} & \textbf{Status} & \textbf{Application in MD} \\
+\midrule
+\endhead
+
+1 & Public endpoint & \implemented & \texttt{GET /api/v1/health/} is accessible without JWT and verifies API/database availability. \\
+
+2 & Public user registration & \notapplicable & Users are created and enabled by an administrator. Public self-registration does not fit the internal identity model. \\
+
+3 & Username/password login & \implemented & \texttt{POST /api/v1/auth/token/}. \\
+
+4 & JWT access token & \implemented & SimpleJWT issues an access token after successful authentication. \\
+
+5 & Refresh token & \implemented & \texttt{POST /api/v1/auth/token/refresh/}. \\
+
+6 & Logout & \implemented & The refresh token is revoked through the token blacklist. \\
+
+7 & Remember Me & \notapplicable & Internal accounts use a uniform token-expiration policy configured by environment variables. \\
+
+8 & Current authenticated user & \implemented & \texttt{GET /api/v1/users/me/}. \\
+
+9 & Google/GitHub social login & \notapplicable & Identities are provisioned internally by an administrator; an external identity provider is not required. \\
+
+10 & Application-specific entity & \implemented & The selected entity is \texttt{Customer}. \\
+
+11 & Complete CRUD & \implemented & Create, list, retrieve, update, partial update, and soft delete are available. \\
+
+12 & JWT-protected endpoints & \implemented & Customer operations require authenticated requests. \\
+
+13 & JSON requests and responses & \implemented & Django REST Framework validates and serializes JSON. \\
+
+14 & Automatic OpenAPI documentation & \implemented & The schema is exposed at \texttt{/openapi/}. \\
+
+15 & Swagger UI testing & \implemented & Swagger UI is exposed at \texttt{/docs/}. \\
+
+16 & Postman testing & \implemented & A Postman collection is executed with Newman to validate authentication, protected CRUD, and the current-user endpoint. \\
+
+\bottomrule
+\end{longtable}
+\normalsize
+
+\section{Public Endpoint}
+
+The health-check endpoint is intentionally public so infrastructure components can verify API and database availability without exposing sensitive business information.
+
+\begin{lstlisting}
+GET /api/v1/health/
+\end{lstlisting}
+
+The endpoint returns the API status, database status, timestamp, and application version. Customers, orders, inventory, and financial data remain protected.
+
+\evidencefigure{03_public_endpoint.png}
+{Successful public endpoint request without a JWT.}
+{fig:public-endpoint}
+
+\section{User Provisioning}
+
+\subsection{Why Public Registration Is Not Used}
+
+MD Marketing \& Design is treated as an internal organizational application. Users are not expected to register themselves.
+
+Instead, an authorized administrator creates and enables accounts through Django Admin. This prevents unauthorized account creation and matches the operational model of the system.
+
+The absence of a public \texttt{/auth/register} endpoint is therefore a deliberate security and identity-governance decision.
+
+The administrator interface is available at:
+
+\begin{lstlisting}
+http://localhost:8000/admin/
+\end{lstlisting}
+
+\evidencefigure{04_admin_user.png}
+{Administrator-controlled user creation in Django Admin.}
+{fig:admin-user}
+
+\section{JWT Authentication}
+
+\subsection{Login}
+
+The login endpoint receives Django-managed credentials and returns an access token and a refresh token.
+
+\begin{lstlisting}
+POST /api/v1/auth/token/
+Content-Type: application/json
+
+{
+  "username": "admin_w5",
+  "password": "********"
+}
+\end{lstlisting}
+
+A successful response contains both JWT values.
+
+\evidencefigure{05_login_jwt.png}
+{Successful login and generation of JWT access and refresh tokens.}
+{fig:login-jwt}
+
+\subsection{Current Authenticated User}
+
+The authenticated-user endpoint requires a valid access token:
+
+\begin{lstlisting}
+GET /api/v1/users/me/
+Authorization: Bearer <access-token>
+\end{lstlisting}
+
+The response includes safe account information such as the user ID, username, name, email, and staff status. It does not expose the password or password hash.
+
+\evidencefigure{06_users_me.png}
+{Authenticated request to the current-user endpoint.}
+{fig:users-me}
+
+\subsection{Refresh Token}
+
+A valid refresh token can be exchanged for a new access token:
+
+\begin{lstlisting}
+POST /api/v1/auth/token/refresh/
+Content-Type: application/json
+
+{
+  "refresh": "<refresh-token>"
+}
+\end{lstlisting}
+
+The configuration enables refresh-token rotation and blacklisting of previously used refresh tokens.
+
+\subsection{Logout}
+
+Logout is implemented by sending the current refresh token to the blacklist endpoint exposed by the Workshop 5 API:
+
+\begin{lstlisting}
+POST /api/v1/auth/token/blacklist/
+Content-Type: application/json
+
+{
+  "refresh": "<refresh-token>"
+}
+\end{lstlisting}
+
+After revocation, the refresh token cannot be reused.
+
+\evidencefigure{09_refresh_logout.png}
+{Refresh-token renewal and logout/revocation workflow.}
+{fig:refresh-logout}
+
+\subsection{Why a Separate Remember Me Mode Is Not Used}
+
+The project uses a uniform JWT expiration policy for internal accounts. Token lifetimes are centrally configured through environment variables.
+
+A separate user-selectable Remember Me mode is not required by the current operational workflow. The access token remains temporary and the refresh-token lifetime is centrally controlled.
+
+\section{Why Social Authentication Is Not Used}
+
+Google or GitHub authentication is not integrated in the Workshop 5 version.
+
+The system uses administrator-managed institutional accounts. Allowing an external social identity provider would introduce a second account-provisioning mechanism that does not correspond to the current business process.
+
+For this reason, social login is documented as intentionally out of scope rather than as a missing technical capability.
+
+\section{Protected Customer CRUD}
+
+\subsection{Selected Entity}
+
+The \textbf{Customer} entity belongs to the real MD domain and is used to demonstrate the protected CRUD requirements.
+
+The available routes are:
+
+\begin{lstlisting}
+POST   /api/v1/crm/clientes/
+GET    /api/v1/crm/clientes/
+GET    /api/v1/crm/clientes/{id}/
+PUT    /api/v1/crm/clientes/{id}/
+PATCH  /api/v1/crm/clientes/{id}/
+DELETE /api/v1/crm/clientes/{id}/
+\end{lstlisting}
+
+The DELETE operation is a soft delete: the customer is marked inactive instead of being physically removed from the database.
+
+\subsection{Request Without JWT}
+
+Customer operations require authentication. A request without an access token must be rejected.
+
+\evidencefigure{07_crud_without_jwt.png}
+{Protected customer endpoint rejected when no JWT is provided.}
+{fig:crud-no-jwt}
+
+\subsection{Request With JWT}
+
+After successful login, the access token is sent using the standard Bearer authorization header.
+
+\begin{lstlisting}
+Authorization: Bearer <access-token>
+\end{lstlisting}
+
+The authenticated user can then execute the permitted customer operations.
+
+\evidencefigure{08_crud_with_jwt.png}
+{Successful protected customer CRUD request using a Bearer JWT.}
+{fig:crud-jwt}
+
+\subsection{Why Individual Resource Ownership Is Not Used}
+
+The workshop discusses scenarios in which a resource belongs to the user who created it. That model does not directly fit MD customers.
+
+Customers are organizational resources shared by authorized staff, not personal objects belonging to an individual account. Therefore, the application does not enforce a rule such as:
+
+\begin{lstlisting}
+customer.user_id == current_user.id
+\end{lstlisting}
+
+Authentication is required for the CRUD. If the business process later requires finer authorization, role-based permissions can be added for areas such as administration, sales, production, or finance.
+
+\section{OpenAPI and Swagger UI}
+
+The Workshop 5 API uses \texttt{drf-spectacular} to generate its OpenAPI schema.
+
+The documentation endpoints are:
+
+\begin{lstlisting}
+GET /openapi/
+GET /docs/
+\end{lstlisting}
+
+Swagger UI allows the team to inspect operations, schemas, request bodies, response models, status codes, and authentication requirements.
+
+\evidencefigure{10_swagger.png}
+{Swagger UI displaying the Workshop 5 API endpoints and schemas.}
+{fig:swagger}
+
+\section{Postman Collection Testing with Newman}
+
+A Postman collection is used to reproduce the complete authentication and CRUD workflow independently of the browser-based Swagger interface. The collection is executed with Newman, Postman's command-line collection runner, because the desktop client was unstable in the local Ubuntu environment.
+
+The test workflow includes:
+
+\begin{itemize}[leftmargin=*]
+    \item public endpoint without authentication;
+    \item correct and incorrect login attempts;
+    \item authenticated \texttt{/users/me/};
+    \item protected CRUD without JWT;
+    \item protected CRUD with JWT;
+    \item valid and invalid refresh token requests;
+    \item logout and refresh-token revocation.
+\end{itemize}
+
+\evidencefigure{11_postman.png}
+{Postman collection executed with Newman: three requests and four assertions completed with zero failures.}
+{fig:postman}
+
+\section{Test Matrix}
+
+\begin{longtable}{p{0.38\textwidth} p{0.20\textwidth} p{0.34\textwidth}}
+\toprule
+\textbf{Test Case} & \textbf{Expected Result} & \textbf{Treatment in MD} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{Test Case} & \textbf{Expected Result} & \textbf{Treatment in MD} \\
+\midrule
+\endhead
+
+Public endpoint without JWT & Success & \implemented \\
+
+Valid public registration & User created & \notapplicable: administrator-controlled provisioning \\
+
+Duplicate/invalid registration data & Rejected & \notapplicable: no public registration \\
+
+Correct login & Tokens returned & \implemented \\
+
+Incorrect login & 401 Unauthorized & \implemented \\
+
+\texttt{/users/me/} without token & Rejected & \implemented \\
+
+\texttt{/users/me/} with valid token & User returned & \implemented \\
+
+Protected CRUD without JWT & Rejected & \implemented \\
+
+Protected CRUD with JWT & Success & \implemented \\
+
+Access another user's resource & Rejected & \adapted: customers are organizational resources rather than user-owned records \\
+
+Invalid or expired JWT & Rejected & \implemented \\
+
+Valid refresh token & New access token & \implemented \\
+
+Invalid refresh token & Rejected & \implemented \\
+
+Logout & Refresh token revoked & \implemented \\
+
+Reuse revoked refresh token & Rejected & \implemented \\
+
+Remember Me false/true & Different refresh lifetime & \notapplicable: uniform internal token policy \\
+
+Social registration/login & User authenticated & \notapplicable: internal administrator-managed identities \\
+
+Swagger/OpenAPI & Success & \implemented \\
+
+Postman/Newman workflow & Success & \implemented \\
+
+\bottomrule
+\end{longtable}
+
+\section{Security Considerations}
+
+The Workshop 5 version applies the following controls:
+
+\begin{itemize}[leftmargin=*]
+    \item Passwords are managed by Django's password-hashing system and are never stored as plain text.
+    \item API responses do not return password hashes.
+    \item Database credentials and application secrets are loaded from environment variables.
+    \item The repository distributes \texttt{.env.example}, not the real \texttt{.env}.
+    \item Business endpoints require JWT authentication.
+    \item Access and refresh tokens are distinguished.
+    \item Refresh tokens can be rotated and revoked through the blacklist mechanism.
+    \item Customer request data is validated through Django REST Framework serializers.
+    \item Customer deletion is logical, preserving record traceability.
+\end{itemize}
+
+Complete JWT values, passwords, and other secrets must be hidden or cropped in screenshots used in the report or GitHub repository.
+
+\section{Reduced GitHub Version}
+
+For the workshop submission, a reduced repository is used instead of publishing the complete MD application.
+
+Its conceptual structure is:
+
+\begin{lstlisting}
+REST_API/
+|-- Backend/
+|   |-- apps/
+|   |   `-- crm/
+|   |-- config/
+|   |-- Dockerfile
+|   |-- manage.py
+|   `-- requirements.txt
+|-- postman/
+|   `-- MD_Workshop5.postman_collection.json
+|-- .env.example
+|-- .gitignore
+|-- docker-compose.yml
+|-- README.md
+`-- main.tex
+\end{lstlisting}
+
+The Workshop 5 project is available in the following GitHub repository:
+
+\begin{center}
+\href{https://github.com/Steven735-star/APLICACIONES-WEB}{\texttt{https://github.com/Steven735-star/APLICACIONES-WEB}}
+\end{center}
+
+\section{Conclusions}
+
+The Workshop 5 phase demonstrates that MD Marketing \& Design provides a REST API protected by JWT, connected to PostgreSQL, documented with OpenAPI, and applied to a real domain CRUD.
+
+The implementation preserves the architecture of the original project rather than replacing it solely to match an example technology. Requirements that do not fit the real operational model are explicitly justified.
+
+In particular, public self-registration, social login, a separate Remember Me mode, and individual customer ownership are not used because MD is modeled as an internal organizational system with administrator-managed accounts and shared business resources.
+
+The reduced repository keeps the submission focused on the API, authentication, documentation, and testing concerns evaluated in Workshop 5.
+
+\end{document}

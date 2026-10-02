@@ -1,0 +1,69 @@
+﻿Listado de rutas de carpetas
+El n·mero de serie del volumen es 00000055 E82C:8B28
+C:.
+|   App.tsx
+|   estructura.txt
+|   index.css
+|   main.tsx
+|   router.tsx
+|   vite-env.d.ts
+|   
++---api
+|       axios.ts
+|       endpoints.ts
+|       
++---assets
+|       hero.png
+|       
++---components
+|       Layout.tsx
+|       StatusBadge.tsx
+|       
++---features
+|   +---auth
+|   |       LoginPage.tsx
+|   |       
+|   +---crm
+|   |   +---catalogo
+|   |   |       CatalogoForm.tsx
+|   |   |       CatalogoModal.tsx
+|   |   |       CatalogoPage.tsx
+|   |   |       useCatalogo.ts
+|   |   |       useCreateCatalogo.ts
+|   |   |       useDeleteCatalogo.ts
+|   |   |       useUpdateCatalogo.ts
+|   |   |       
+|   |   +---clientes
+|   |   |       ClienteForm.tsx
+|   |   |       ClienteModal.tsx
+|   |   |       ClientesPage.tsx
+|   |   |       useClientes.ts
+|   |   |       useCreateCliente.ts
+|   |   |       useDeleteCliente.ts
+|   |   |       useUpdateCliente.ts
+|   |   |       
+|   |   \---ordenes
+|   |           OrdenDetailPage.tsx
+|   |           useOrdenes.ts
+|   |           
+|   +---finanzas
+|   |       DashboardPage.tsx
+|   |       TransaccionesPage.tsx
+|   |       useReportes.ts
+|   |       
+|   \---kanban
+|           KanbanBoard.tsx
+|           useKanbanSocket.ts
+|           
++---hooks
+|       useAuth.ts
+|       useDebounce.ts
+|       
++---store
+|       authStore.ts
+|       uiStore.ts
+|       
+\---types
+        api.types.ts
+        fsm.types.ts
+        

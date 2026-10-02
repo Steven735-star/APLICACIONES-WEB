@@ -1,0 +1,253 @@
+# ==============================================================================
+# MD Marketing & Diseño — docker-compose.yml
+# Orquestación completa del entorno de desarrollo.
+#
+# SERVICIOS:
+#   db            → PostgreSQL 16        (puerto 5432)
+#   redis         → Redis 7 Alpine       (puerto 6379)
+#   web           → Django + Daphne      (puerto 8000)
+#   celery        → Celery Worker        (sin puerto externo)
+#   celery_beat   → Celery Beat          (sin puerto externo)
+#   frontend      → React + Vite         (puerto 5173)
+#
+# USO:
+#   make dev          → Levantar todos los servicios
+#   make stop         → Detener sin borrar datos
+#   make reset        → Borrar TODO (contenedores + volúmenes + imágenes)
+# ==============================================================================
+
+name: md_marketing
+
+# ------------------------------------------------------------------------------
+# VARIABLES GLOBALES DE ENTORNO
+# Leídas desde el archivo .env en la raíz del proyecto.
+# Referencia de todas las variables: Backend/.env.example
+# ------------------------------------------------------------------------------
+
+x-django-env: &django-env
+  env_file:
+    - .env
+  environment:
+    DJANGO_SETTINGS_MODULE: settings.development
+    PYTHONUNBUFFERED: "1"          # Logs de Python sin buffer (importantes en Docker)
+    PYTHONDONTWRITEBYTECODE: "1"   # No generar archivos .pyc dentro del contenedor
+
+# ------------------------------------------------------------------------------
+# CONFIGURACIÓN COMPARTIDA DE DJANGO
+# Los servicios web, celery y celery_beat usan la misma imagen y configuración.
+# DRY: definimos una vez y extendemos con <<: *django-base
+# ------------------------------------------------------------------------------
+
+x-django-base: &django-base
+  <<: *django-env
+  build:
+    context: ./Backend
+    dockerfile: Dockerfile
+  volumes:
+    # Montaje del código fuente para hot-reload en desarrollo.
+    # Los cambios en Backend/ se reflejan inmediatamente sin rebuild.
+    - ./Backend:/app
+    # Volumen anónimo para que node_modules del contenedor no sea
+    # sobreescrito por el mount del host (patrón estándar Python/Django)
+    - django_static:/app/staticfiles
+    - django_media:/app/media
+    - django_logs:/app/logs
+  depends_on:
+    db:
+      condition: service_healthy   # Esperar a que PostgreSQL acepte conexiones
+    redis:
+      condition: service_healthy   # Esperar a que Redis responda PING
+
+
+services:
+
+  # ════════════════════════════════════════════════════════════════════════════
+  # BASE DE DATOS — PostgreSQL 16
+  # ════════════════════════════════════════════════════════════════════════════
+
+  db:
+    image: postgres:16-alpine
+    container_name: md_db
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB:       ${POSTGRES_DB}
+      POSTGRES_USER:     ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      
+    volumes:
+      # Volumen con nombre: los datos persisten entre reinicios
+      - postgres_data:/var/lib/postgresql/data
+      # Script de inicialización: crea extensiones útiles al primer arranque
+      - ./Backend/scripts/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql:ro
+    ports:
+      - "5432:5432"      # Expuesto para conectar con DBeaver/TablePlus desde el host
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    networks:
+      - md_network
+
+
+  # ════════════════════════════════════════════════════════════════════════════
+  # CACHE / BROKER / CHANNELS — Redis 7
+  # ════════════════════════════════════════════════════════════════════════════
+
+  redis:
+    image: redis:7-alpine
+    container_name: md_redis
+    restart: unless-stopped
+    command: >
+      redis-server
+      --maxmemory 256mb
+      --maxmemory-policy allkeys-lru
+      --save 60 1
+      --loglevel warning
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"      # Expuesto para inspección con redis-cli desde el host
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
+    networks:
+      - md_network
+
+
+  # ════════════════════════════════════════════════════════════════════════════
+  # BACKEND — Django 5 + Daphne (ASGI)
+  # ════════════════════════════════════════════════════════════════════════════
+
+  web:
+    <<: *django-base
+    container_name: md_web
+    restart: unless-stopped
+    # Daphne: servidor ASGI que maneja HTTP + WebSockets simultáneamente.
+    # Necesario para Django Channels (Kanban en tiempo real).
+    command: >
+      sh -c "
+        echo 'Aplicando migraciones...' &&
+        python manage.py migrate --noinput &&
+        echo 'Iniciando servidor...' &&
+        daphne -b 0.0.0.0 -p 8000 config.asgi:application
+      "
+    ports:
+      - "8000:8000"
+    networks:
+      - md_network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/api/v1/health/ || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+
+  # ════════════════════════════════════════════════════════════════════════════
+  # TAREAS ASÍNCRONAS — Celery Worker
+  # ════════════════════════════════════════════════════════════════════════════
+
+  celery:
+    <<: *django-base
+    container_name: md_celery
+    restart: unless-stopped
+    command: >
+      sh -c "python -m celery -A config worker
+      --loglevel=info
+      --concurrency=2
+      --queues=default,reportes,alertas
+      --hostname=worker@%h"
+    depends_on:
+      web:
+        condition: service_healthy   # Esperar que Django ya migró la DB
+    networks:
+      - md_network
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A config inspect ping -d worker@$${HOSTNAME} || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+
+  # ════════════════════════════════════════════════════════════════════════════
+  # TAREAS PROGRAMADAS — Celery Beat
+  # ════════════════════════════════════════════════════════════════════════════
+
+  celery_beat:
+    <<: *django-base
+    container_name: md_celery_beat
+    restart: unless-stopped
+    command: >
+      sh -c "python -m celery -A config beat
+      --loglevel=info
+      --scheduler django_celery_beat.schedulers:DatabaseScheduler"
+    depends_on:
+      web:
+        condition: service_healthy
+    networks:
+      - md_network
+
+
+  # ════════════════════════════════════════════════════════════════════════════
+  # FRONTEND — React 18 + Vite (desarrollo)
+  # ════════════════════════════════════════════════════════════════════════════
+
+  frontend:
+    container_name: md_frontend
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      # Hot-reload: cambios en Frontend/src/ se reflejan instantáneamente
+      - ./Frontend:/app
+      # Evitar que el node_modules del host pise el del contenedor
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    environment:
+      # El proxy de Vite redirige /api → Django automáticamente (ver vite.config.ts)
+      VITE_API_URL: http://web:8000
+      CHOKIDAR_USEPOLLING: "true"  # Necesario para hot-reload en Windows/WSL2
+    command: npm run dev -- --host 0.0.0.0
+    depends_on:
+      - web
+    networks:
+      - md_network
+
+
+# ==============================================================================
+# REDES
+# ==============================================================================
+
+networks:
+  md_network:
+    driver: bridge
+    name: md_marketing_network
+
+
+# ==============================================================================
+# VOLÚMENES PERSISTENTES
+# Los datos de PostgreSQL y Redis sobreviven a `docker-compose down`.
+# Solo se borran con `docker-compose down -v` o `make reset`.
+# ==============================================================================
+
+volumes:
+  postgres_data:
+    name: md_postgres_data
+  redis_data:
+    name: md_redis_data
+  django_static:
+    name: md_django_static
+  django_media:
+    name: md_django_media
+  django_logs:
+    name: md_django_logs
