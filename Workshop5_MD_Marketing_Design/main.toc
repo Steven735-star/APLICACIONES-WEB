@@ -1,0 +1,30 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}Objectives}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}General Objective}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Specific Objectives}{2}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Submission Scope}{2}{section.3}%
+\contentsline {section}{\numberline {4}Architecture}{3}{section.4}%
+\contentsline {section}{\numberline {5}Startup and Infrastructure Verification}{4}{section.5}%
+\contentsline {section}{\numberline {6}Workshop Requirement Mapping}{5}{section.6}%
+\contentsline {section}{\numberline {7}Public Endpoint}{6}{section.7}%
+\contentsline {section}{\numberline {8}User Provisioning}{7}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Why Public Registration Is Not Used}{7}{subsection.8.1}%
+\contentsline {section}{\numberline {9}JWT Authentication}{8}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Login}{8}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Current Authenticated User}{9}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Refresh Token}{10}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Logout}{10}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}Why a Separate Remember Me Mode Is Not Used}{11}{subsection.9.5}%
+\contentsline {section}{\numberline {10}Why Social Authentication Is Not Used}{11}{section.10}%
+\contentsline {section}{\numberline {11}Protected Customer CRUD}{11}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Selected Entity}{11}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Request Without JWT}{12}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Request With JWT}{12}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}Why Individual Resource Ownership Is Not Used}{13}{subsection.11.4}%
+\contentsline {section}{\numberline {12}OpenAPI and Swagger UI}{13}{section.12}%
+\contentsline {section}{\numberline {13}Postman Collection Testing with Newman}{14}{section.13}%
+\contentsline {section}{\numberline {14}Test Matrix}{15}{section.14}%
+\contentsline {section}{\numberline {15}Security Considerations}{16}{section.15}%
+\contentsline {section}{\numberline {16}Reduced GitHub Version}{16}{section.16}%
+\contentsline {section}{\numberline {17}Conclusions}{17}{section.17}%
